@@ -1,0 +1,49 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: generic-qm
+spec:
+  license:
+    accept: true
+    license: L-RJON-BZFQU2
+    use: NonProduction
+  version: 9.2.3.0-r1
+
+  template:
+    pod:
+      volumes:
+        - name: config-volume-scripts
+          configMap:
+            name: qm02-scripts-configmap
+            defaultMode: 0777
+        - name: dynamic-config-volume-mqsc
+          configMap:
+            name: qm02-dynamic-mqsc-configmap
+            defaultMode: 0777
+
+      containers:
+        - env:
+            - name: MQSNOAUT
+              value: 'yes'
+          name: qmgr
+          volumeMounts:
+          - name: config-volume-scripts
+            mountPath: /mq-config
+            readOnly: true
+            optional: true
+          - name: dynamic-config-volume-mqsc
+            mountPath: /dyn-mq-config-mqsc
+            readOnly: true
+            optional: true
+
+
+  queueManager:
+      resources:
+        limits:
+          cpu: 800m
+        requests:
+          cpu: 800m
+      name: qm02
+      storage:
+        queueManager:
+          type: ephemeral

@@ -1,0 +1,4 @@
+resources:
+- ./dev/qm01
+- ./prd/qm01
+namePrefix: cluster-a-

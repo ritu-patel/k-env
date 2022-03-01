@@ -1,0 +1,24 @@
+resources:
+- ../../base/qm01
+
+patchesStrategicMerge:
+- ./qm.yaml
+
+# Alternative mechanism for patching
+patches:
+- target:
+    group: mq.ibm.com
+    kind: QueueManager
+  patch: |-
+    - op: add
+      path: /spec/queueManager/image
+      value: cp.icr.io/cp/ibm-mqadvanced-server-integration:9.2.3.0-r1
+    - op: replace
+      path: /metadata/name
+      value: devqm01
+# Add envirnoment specific static MQSC such as channels and XMIT queues
+configMapGenerator:
+- name: mqsc-configmap
+  behavior: merge
+  files:
+  - static-qm-dev.mqsc

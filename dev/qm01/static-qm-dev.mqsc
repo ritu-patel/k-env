@@ -1,0 +1,4 @@
+* Define environment specific configuration here, such as channels
+* TODO parameterise STARTARG and move up
+DEFINE SERVICE(APPLY_MQSC) CONTROL(MANUAL) SERVTYPE(SERVER) STARTCMD('/mq-config/start-mqsc.sh') STARTARG(DQM01) STOPCMD('/mq-config/start-mqsc.sh') STOPARG('') STDOUT('') STDERR('')
+DEFINE QREMOTE(IBM.DEMO.REMOTE.TO.QM02) RQMNAME (DQM02) RNAME(IBM.DEMO.Q.QM02)
