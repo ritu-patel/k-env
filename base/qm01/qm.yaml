@@ -8,21 +8,6 @@ spec:
     license: L-RJON-BZFQU2
     use: NonProduction
   version: 9.2.3.0-r1
-
-  pki:
-    keys:
-      - name: certificate
-        secret:
-          items:
-            - tls.key
-            - tls.crt
-          secretName: qm01-cert
-    trust:
-      - name: ca
-        secret:
-          items:
-            - ca.crt
-          secretName: qm01-cert
   template:
     pod:
       volumes:
