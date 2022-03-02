@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # A simple MVP script that will run MQSC against a queue manager.
-ckksum=""
+cksum=""
 
 # Outer loop that keeps the MQ service running
 while true; do
