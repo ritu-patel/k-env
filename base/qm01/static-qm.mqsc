@@ -1,6 +1,3 @@
 * Use this file to apply MQSC to all environments/instances of this queue manager.
 DEFINE QLOCAL(IBM.DEMO.Q.QM01) REPLACE
 DEFINE QLOCAL(IBM.DEMO.Q.QM01.STATIC) REPLACE
-*
-DEFINE QLOCAL(DQM02) USAGE(XMITQ) DESCR('Transmit queue used to send messages to QM02' ) REPLACE
-DEFINE CHANNEL(QM01.TO.QM02) CHLTYPE(SDR) TRPTYPE(TCP) CONNAME('devqm02-ibm-mq(1414)') XMITQ(DQM02) DESCR('Channel to send to QM02' ) REPLACE

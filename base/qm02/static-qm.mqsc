@@ -1,4 +1,2 @@
 * Use this file to apply MQSC to all environments/instances of this queue manager.
 DEFINE QLOCAL(IBM.DEMO.Q.QM02) REPLACE
-DEFINE QLOCAL(IBM.DEMO.Q.QM02.STATIC) REPLACE
-DEFINE CHANNEL(QM01.TO.QM02) CHLTYPE(RCVR) TRPTYPE(TCP)
