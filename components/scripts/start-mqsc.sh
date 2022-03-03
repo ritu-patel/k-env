@@ -14,7 +14,7 @@ while true; do
       echo "Applying MQSC"
       runmqsc $1 < /dyn-mq-config-mqsc/dynamic.mqsc
    else
-      sleep 1
+      sleep 3
    fi
 
 done
