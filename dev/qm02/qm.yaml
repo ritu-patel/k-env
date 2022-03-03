@@ -9,8 +9,8 @@ spec:
       - configMap:
           name: qm02-mqsc-configmap
           items:
-            - static-generic.mqsc
-            - static-qm.mqsc
+            # - static-generic.mqsc
+            # - static-qm.mqsc
             - static-qm-dev.mqsc
 
   web:

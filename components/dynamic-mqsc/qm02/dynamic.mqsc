@@ -1,3 +1,0 @@
-* Use this file for MQSC that you want to be able to update without restarting the queue manager.
-DEFINE QLOCAL(A1.DYNAMIC.QUEUE)
-DEFINE QLOCAL(A2.DYNAMIC.QUEUE)
