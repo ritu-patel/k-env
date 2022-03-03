@@ -8,14 +8,10 @@ spec:
     license: L-RJON-C7QG3S
     use: NonProduction
   version: 9.2.4.0-r1
-  template:
-    pod:
-      containers:
-        - env:
-            - name: MQSNOAUT
-              value: "yes"
-          name: qmgr
+
   queueManager:
+    name: GENERIC
+    image: cp.icr.io/cp/ibm-mqadvanced-server-integration:9.2.4.0-r1-r2
     resources:
       limits:
         cpu: 500m
@@ -23,7 +19,19 @@ spec:
       requests:
         cpu: 500m
         memory: 1Gi
-    name: GENERIC
     storage:
       queueManager:
         type: ephemeral
+  template:
+    pod:
+      containers:
+        name: qmgr
+        volumeMounts:
+          - name: config-volume-scripts
+            mountPath: /mq-config
+            readOnly: true
+            optional: true
+          - name: dynamic-config-volume-mqsc
+            mountPath: /dyn-mq-config-mqsc
+            readOnly: true
+            optional: true

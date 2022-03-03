@@ -1,3 +1,0 @@
-* Use this file to apply MQSC to all environments/instances of this queue manager.
-DEFINE QLOCAL(IBM.DEMO.Q.QM01) REPLACE
-DEFINE QLOCAL(IBM.DEMO.Q.QM01.STATIC) REPLACE

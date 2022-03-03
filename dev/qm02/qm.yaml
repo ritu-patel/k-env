@@ -4,14 +4,33 @@ metadata:
   name: generic-qm
 spec:
   queueManager:
-    name: DQM02
+    name: DQM022
     mqsc:
       - configMap:
-          name: qm02-mqsc-configmap
+          name: qm022-static-mqsc-configmap
           items:
-            # - static-generic.mqsc
-            # - static-qm.mqsc
-            - static-qm-dev.mqsc
+            - static-qm.mqsc
+            - static-service-mqsc
+
+  pki:
+    keys:
+      - name: certificate
+        secret:
+          items:
+            - tls.key
+            - tls.crt
+          secretName: qm022-cert
+  template:
+    pod:
+      volumes:
+        - name: config-volume-scripts
+          configMap:
+            name: qm022-scripts-configmap
+            defaultMode: 0777
+        - name: dynamic-config-volume-mqsc
+          configMap:
+            name: qm022-dynamic-mqsc-configmap
+            defaultMode: 0777
 
   web:
     enabled: true

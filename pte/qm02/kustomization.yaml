@@ -1,5 +1,5 @@
 resources:
-  - ../../pte/qm01
+  - ../../base/qm01
 
 patchesStrategicMerge:
   - ./qm.yaml

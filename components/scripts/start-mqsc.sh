@@ -5,16 +5,19 @@ cksum=""
 
 # Outer loop that keeps the MQ service running
 while true; do
+   arr=`ls`
+   for i in arr:
+      filename=i
+      tmpCksum=`cksum /dyn-mq-config-mqsc/$filename | cut -d" " -f1`
 
-   tmpCksum=`cksum /dyn-mq-config-mqsc/dynamic.mqsc | cut -d" " -f1`
-
-   if (( tmpCksum != cksum ))
-   then
-      cksum=$tmpCksum
-      echo "Applying MQSC"
-      runmqsc $1 < /dyn-mq-config-mqsc/dynamic.mqsc
-   else
-      sleep 3
-   fi
+      if (( tmpCksum != cksum ))
+      then
+         cksum=$tmpCksum
+         echo "Applying MQSC"
+         runmqsc $1 < /dyn-mq-config-mqsc/dynamic.mqsc
+         
+      else
+         sleep 3
+      fi
 
 done

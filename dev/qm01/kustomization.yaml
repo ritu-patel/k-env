@@ -1,5 +1,8 @@
 resources:
-  - ../../base/qm01
+  - ../../base/generic
+
+# Add a prefix to all queue manager artefacts, use a different namespace for each instance of the same queue manager i.e. dev, prd.
+namePrefix: qm011-
 
 patchesStrategicMerge:
   - ./qm.yaml
@@ -10,15 +13,29 @@ patches:
       group: mq.ibm.com
       kind: QueueManager
     patch: |-
-      - op: add
-        path: /spec/queueManager/image
-        value: cp.icr.io/cp/ibm-mqadvanced-server-integration:9.2.4.0-r1
       - op: replace
         path: /metadata/name
-        value: devqm01
-# Add envirnoment specific static MQSC such as channels and XMIT queues
+        value: devqm011
+
+generatorOptions:
+ disableNameSuffixHash: true
+# Create a configMap that will be used with a volume that is dynamically updated.
 configMapGenerator:
-  - name: mqsc-configmap
-    behavior: merge
+- name: dynamic-mqsc-configmap
+  behavior: create
+  files:
+  - dynamic.mqsc
+- name: static-mqsc-configmap
+  behavior: merge
+  files:
+    - static-qm.mqsc
+
+generatorOptions:
+ disableNameSuffixHash: true
+secretGenerator:
+  - name: cert
+    behavior: create
     files:
-      - static-qm-dev.mqsc
+      - certs/tls.crt
+      - certs/tls.key
+    type: kubernetes.io/tls
