@@ -10,7 +10,7 @@ spec:
           name: qm011-static-mqsc-configmap
           items:
             - static-qm.mqsc
-            - static-service-mqsc
+            - static-service-mqsc.mqsc
 
   pki:
     keys:

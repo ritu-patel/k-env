@@ -12,4 +12,4 @@ configMapGenerator:
   - name: static-mqsc-configmap
     behavior: create
     files:
-      - static-service-mqsc
+      - static-service-mqsc.mqsc
