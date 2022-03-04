@@ -30,8 +30,6 @@ spec:
             - name: config-volume-scripts
               mountPath: /mq-config
               readOnly: true
-              optional: true
             - name: dynamic-config-volume-mqsc
               mountPath: /dyn-mq-config-mqsc
               readOnly: true
-              optional: true
