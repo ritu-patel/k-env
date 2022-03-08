@@ -2,3 +2,7 @@ queuemanager-crd.yaml
 temp.yaml
 base/generic/qm01
 base/generic/qm02
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
