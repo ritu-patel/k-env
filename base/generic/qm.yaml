@@ -26,7 +26,6 @@ spec:
     pod:
       containers:
         - name: qmgr
-          args: ["printenv"]
           envFrom:
             - secretRef:
                 name: mqsc-envs
