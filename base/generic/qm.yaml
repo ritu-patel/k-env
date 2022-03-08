@@ -12,6 +12,24 @@ spec:
   queueManager:
     name: GENERIC
     image: cp.icr.io/cp/ibm-mqadvanced-server-integration:9.2.4.0-r1
+    availability:
+      type: NativeHA
+    storage:
+      defaultClass: ibmc-block-gold
+      persistedData:
+        class: ibmc-block-gold
+        deleteClaim: true
+        enabled: true
+        type: persistent-claim
+      queueManager:
+        class: ibmc-block-gold
+        deleteClaim: true
+        type: persistent-claim
+      recoveryLogs:
+        class: ibmc-block-gold
+        deleteClaim: true
+        enabled: true
+        type: persistent-claim
     resources:
       limits:
         cpu: 500m
@@ -19,9 +37,6 @@ spec:
       requests:
         cpu: 500m
         memory: 1Gi
-    storage:
-      queueManager:
-        type: ephemeral
   template:
     pod:
       containers:
