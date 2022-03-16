@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ext-conn-devqm011-traffic #any unique route name
+spec:
+# EXT.CONN
+  host: ext12e-conn.chl.mq.ibm.com # SNI mapping
+  to:
+    kind: Service
+    name: qm011-devqm011-ibm-mq #service name for your QM
+  port:
+    targetPort: 1414
+  tls:
+    termination: passthrough
