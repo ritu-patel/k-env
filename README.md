@@ -7,7 +7,7 @@
 
 **Description**: This repo has a specific folder structure. It has 5 different folder for 5 environments such as DEV, SIT, UAT, PTE, PRD. Each environment has different QM folders and each QM folder has OCP/MQ configuration files.
 
-**Important Note**: All the dynamic.mqsc changes come from [Dynamic MQSC repo](https://github.com/IBMMQAutomation/dynamic-mqsc) that your developer has requested so do not make changes directly to your dynamic.mqsc files in this repo.
+**Important Note**: All the dynamic.mqsc changes come from [Dynamic MQSC repo](https://github.com/ritu-patel/mq-dynamic-mqsc) that your developer has requested so do not make changes directly to your dynamic.mqsc files in this repo.
 
 ```
 uat
@@ -37,13 +37,13 @@ uat
 
 We have three repositories for whole end to end pipeline:
 
-1. Base MQ image [repository](https://github.com/IBMMQAutomation/base-image) to build MQ custom base image for every MQ release/fix pack
+1. Base MQ image [repository](https://github.com/ritu-patel/mq-custom-image) to build MQ custom base image for every MQ release/fix pack
    - Access: Admins only
-2. Dynamic MQSC [repository](https://github.com/IBMMQAutomation/dynamic-mqsc) for MQSC Changes.
+2. Dynamic MQSC [repository](https://github.com/ritu-patel/mq-dynamic-mqsc) for MQSC Changes.
    - Access:
      - Developers (create PR)
      - Admins (approve PR)
-3. Curent GitOps [repository](https://github.com/IBMMQAutomation/mq-pipeline.git) for ArgoCD
+3. Curent GitOps [repository](https://github.com/ritu-patel/mq-gitops.git) for ArgoCD
    - Access: Admins only (approve PR)
 
 # Steps
@@ -119,7 +119,7 @@ Already have an Openshift cluster with the following operators:
 
 * Git clone and copy it to your Github/Bitbucket. Then make necessary changes to all the parameters in `pipeline.yaml`.
   ```
-  git clone https://github.com/IBMMQAutomation/base-image.git
+  git clone https://github.com/ritu-patel/mq-custom-image.git
   cd base-iamge
   ```
 
@@ -141,7 +141,7 @@ Already have an Openshift cluster with the following operators:
 
 - Git clone and copy it to your Github/BitBucket
   ```
-  git clone https://github.com/IBMMQAutomation/dynamic-mqsc.git
+  git clone https://github.com/ritu-patel/mq-dynamic-mqsc.git
   ```
 - Make necessary changes to all the parameters in `pipeline.yaml`. Then apply tekton pipeline and tekton task on your OpenShift cluster
 
@@ -171,7 +171,7 @@ Already have an Openshift cluster with the following operators:
   - Project: default (ArgoCD project name)
   - Sync Policy: `Automatic` for dev but `Manual` for production
   - Select `Skip Schema Validation` (this is needed for kind:QueueManager)
-  - Repository URL: `<your-git-url>` example: https://github.com/IBMMQAutomation/mq-pipeline.git
+  - Repository URL: `<your-git-url>` example: https://github.com/ritu-patel/mq-gitops.git
   - Revision: `<your-branch>` example: HEAD for master
   - Path: `dev/qm01` (subfolder you want to deploy)
   - Cluster URL: `https://kubernetes.default.svc`
