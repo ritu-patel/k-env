@@ -1,7 +1,7 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: ext-conn-devqm01-traffic
+  name: ext-conn-prdqm02-traffic
 spec:
   # EXT.CONN
   host: ext2e-conn.chl.mq.ibm.com

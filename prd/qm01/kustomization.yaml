@@ -1,9 +1,9 @@
 resources:
   - ../../pte/qm01
+  # - route.yaml # uncomment only if you want to change the SNI route
 
-# patchesStrategicMerge:
-#   - ./qm.yaml
-
+patchesStrategicMerge:
+  - ./qm.yaml
 # Alternative mechanism for patching
 patches:
   - target:

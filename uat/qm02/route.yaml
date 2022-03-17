@@ -1,13 +1,13 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: ext-conn-devqm01-traffic
+  name: receiver-qm-to-qm-traffic
 spec:
-  # EXT.CONN
-  host: ext2e-conn.chl.mq.ibm.com
+  # QM1.TO.QM2
+  host: qm12e-to2e-qm2.chl.mq.ibm.com
   to:
     kind: Service
-    name: sender-uat-qm-ibm-mq
+    name: receiver-uat-qm-ibm-mq
   port:
     targetPort: 1414
   tls:

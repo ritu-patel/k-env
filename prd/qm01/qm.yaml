@@ -8,13 +8,4 @@ spec:
     license: L-RJON-BZFQU2
     use: Production
   queueManager:
-    name: PQM01
-    mqsc:
-      - configMap:
-          name: qm01-mqsc-configmap
-          items:
-            # - static-generic.mqsc
-            # - static-qm.mqsc
-            - static-qm-prd.mqsc
-  web:
-    enabled: false
+    name: PRDQM01

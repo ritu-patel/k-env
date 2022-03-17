@@ -10,24 +10,11 @@ spec:
           name: qm011-static-mqsc-configmap
           items:
             - static-qm.mqsc
-    # availability:
-    #   type: NativeHA
-    # storage:
-    #   defaultClass: ibmc-block-gold
-    #   persistedData:
-    #     class: ibmc-block-gold
-    #     deleteClaim: true
-    #     enabled: true
-    #     type: persistent-claim
-    #   queueManager:
-    #     class: ibmc-block-gold
-    #     deleteClaim: true
-    #     type: persistent-claim
-    #   recoveryLogs:
-    #     class: ibmc-block-gold
-    #     deleteClaim: true
-    #     enabled: true
-    #     type: persistent-claim
+    ini:
+      - configMap:
+          name: qm011-static-ini-configmap
+          items:
+            - qm.ini
   pki:
     keys:
       - name: certificate

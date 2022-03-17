@@ -1,10 +1,10 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: ext-conn-devqm01-traffic
+  name: sender-qm-to-qm-traffic
 spec:
-  # EXT.CONN
-  host: ext2e-conn.chl.mq.ibm.com
+  # SENDER.EXT.CONN
+  host: sender2e-ext2e-conn.chl.mq.ibm.com
   to:
     kind: Service
     name: sender-uat-qm-ibm-mq

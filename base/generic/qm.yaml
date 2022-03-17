@@ -12,6 +12,13 @@ spec:
   queueManager:
     name: GENERIC
     image: cp.icr.io/cp/ibm-mqadvanced-server-integration:9.2.4.0-r1
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 1Gi
     availability:
       type: NativeHA
     storage:
@@ -30,13 +37,6 @@ spec:
         deleteClaim: true
         enabled: true
         type: persistent-claim
-    resources:
-      limits:
-        cpu: 500m
-        memory: 1Gi
-      requests:
-        cpu: 500m
-        memory: 1Gi
   template:
     pod:
       containers:
